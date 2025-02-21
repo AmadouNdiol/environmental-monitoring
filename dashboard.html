@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Tableau de Bord Environnemental - Sénégal</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+        .dashboard { max-width: 1200px; margin: 0 auto; }
+        .section { margin-bottom: 30px; padding: 20px; border: 1px solid #ddd; border-radius: 8px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+        .chart-container { height: 300px; background: #f9f9f9; padding: 15px; border-radius: 4px; }
+        h1 { color: #2c3e50; }
+        h2 { color: #34495e; }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <h1>Tableau de Bord Environnemental - Sénégal</h1>
+        
+        <div class="section">
+            <h2>Climat</h2>
+            <div class="grid">
+                <div class="chart-container">
+                    <canvas id="temperatureChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="precipitationChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Biodiversité</h2>
+            <div class="grid">
+                <div class="chart-container">
+                    <canvas id="speciesChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="ecosystemChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Occupation des Sols</h2>
+            <div class="grid">
+                <div class="chart-container">
+                    <canvas id="landCoverChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="forestChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Eau et Zones Humides</h2>
+            <div class="grid">
+                <div class="chart-container">
+                    <canvas id="waterQualityChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <canvas id="wetlandsChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration des graphiques
+        function createChart(canvasId, label, color) {
+            const ctx = document.getElementById(canvasId).getContext('2d');
+            return new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin'],
+                    datasets: [{
+                        label: label,
+                        data: [65, 59, 80, 81, 56, 55],
+                        borderColor: color,
+                        tension: 0.1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+        }
+
+        // Création des graphiques
+        createChart('temperatureChart', 'Température (°C)', '#ff6384');
+        createChart('precipitationChart', 'Précipitations (mm)', '#36a2eb');
+        createChart('speciesChart', 'Espèces observées', '#4bc0c0');
+        createChart('ecosystemChart', 'État des écosystèmes', '#ff9f40');
+        createChart('landCoverChart', 'Occupation des sols', '#9966ff');
+        createChart('forestChart', 'Couverture forestière', '#32cd32');
+        createChart('waterQualityChart', 'Qualité de l\'eau', '#4169e1');
+        createChart('wetlandsChart', 'Surfaces des zones humides', '#8b4513');
+    </script>
+</body>
+</html>
