@@ -1,0 +1,67 @@
+# config.yml
+
+data_sources:
+  climate:
+    - name: "NASA POWER"
+      url: "https://power.larc.nasa.gov/api/"
+      variables:
+        - temperature
+        - precipitation
+        - humidity
+    - name: "Copernicus Climate Data Store"
+      url: "https://cds.climate.copernicus.eu/api/"
+      variables:
+        - temperature_anomaly
+        - drought_index
+        
+  biodiversity:
+    - name: "GBIF"
+      url: "https://api.gbif.org/v1/"
+      datasets:
+        - species_occurrence
+        - ecosystem_types
+    - name: "iNaturalist"
+      url: "https://api.inaturalist.org/v1/"
+      
+  land_cover:
+    - name: "Copernicus Land Service"
+      url: "https://land.copernicus.eu/api/"
+      layers:
+        - forests
+        - urban_areas
+        - croplands
+        - grasslands
+        - wetlands
+        
+  air_quality:
+    - name: "OpenAQ"
+      url: "https://api.openaq.org/v2/"
+      parameters:
+        - pm25
+        - no2
+        - o3
+        
+  water:
+    - name: "Global Water Watch"
+      url: "https://api.globalwaterwatch.org/"
+      metrics:
+        - water_quality
+        - water_availability
+        - flood_risk
+        
+  population:
+    - name: "WorldPop"
+      url: "https://api.worldpop.org/"
+      
+  soil:
+    - name: "ISRIC SoilGrids"
+      url: "https://rest.isric.org/"
+      properties:
+        - organic_carbon
+        - ph
+        - texture
+        
+update_frequency: "daily"
+spatial_resolution: "1km"
+temporal_resolution: "daily"
+default_region: "Senegal"
